@@ -53,6 +53,13 @@ ai201-project6-cinelog-starter/
 | POST | `/collection/<user_id>/add` | Add a film to the collection |
 | DELETE | `/collection/<user_id>/remove` | Remove a film from the collection |
 
+### Watchlist
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/watchlist/<user_id>` | Get a user's watchlist (newest first) |
+| POST | `/watchlist/<user_id>/add` | Add a film to the watchlist |
+
 ---
 
 ## Data Models
@@ -62,6 +69,8 @@ ai201-project6-cinelog-starter/
 **User** — A registered user. IDs are UUIDs.
 
 **CollectionEntry** — Links a user to a film they've watched. Stores rating and date added. A user can only have one entry per film.
+
+**WatchlistEntry** — Links a user to a film they want to watch. Stores date added and a `public` visibility flag (private by default). A user can only have one entry per film.
 
 ---
 
