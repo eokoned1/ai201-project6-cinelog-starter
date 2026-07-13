@@ -79,7 +79,9 @@ class WatchlistEntry(db.Model):
     user_id = db.Column(db.String(36), db.ForeignKey("user.id"), nullable=False)
     film_id = db.Column(db.String(36), db.ForeignKey("film.id"), nullable=False)
     date_added = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
-    public = db.Column(db.Boolean, default=True)
+    # Private by default: a watchlist reveals intent (what you plan to watch),
+    # so users should opt in to sharing rather than opt out. See PR response doc.
+    public = db.Column(db.Boolean, default=False)
 
     film = db.relationship("Film", backref="watchlist_entries")
     user = db.relationship("User", backref="watchlist_entries")
